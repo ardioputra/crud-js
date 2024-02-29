@@ -4,31 +4,33 @@ import { useState } from "react";
 export default function Home() {
   const [doneCount, setDoneCount] = useState(0);
   function addTask() {
-    const inputBox = (document.getElementById("input-box") as HTMLElement);
-    const listContainer = (document.getElementById("list-container") as HTMLElement);
+    const inputBox = document.getElementById("input-box") as HTMLInputElement;
+    const listContainer = document.getElementById(
+      "list-container"
+    ) as HTMLInputElement;
 
     if (!inputBox) {
       alert("Input box not found");
       return;
     }
 
-    if (inputBox.value === "") {
+    if (inputBox?.value === "") {
       alert("There is no task to add");
     } else {
-      let input = document.createElement("input");
+      const input = document.createElement("input");
       input.setAttribute("type", "checkbox");
 
-      let li = document.createElement("li");
+      const li = document.createElement("li");
       li.appendChild(input);
 
       // Create a separate span element for the text content
-      let textElement = document.createElement("span");
-      textElement.textContent = inputBox.value;
+      const textElement = document.createElement("span");
+      textElement.textContent = inputBox?.value;
       li.appendChild(textElement);
 
       listContainer?.appendChild(li);
 
-      let span = document.createElement("span");
+      const span = document.createElement("span");
       span.innerHTML = "\u00d7";
       li.appendChild(span);
 
@@ -49,7 +51,9 @@ export default function Home() {
   }
 
   function updateDoneCount() {
-    const checkboxes = (document.querySelectorAll('input[type="checkbox"]') as HTMLElement);
+    const checkboxes = document.querySelectorAll(
+      'input[type="checkbox"]'
+    ) as NodeListOf<HTMLInputElement>;
     let count = 0;
 
     checkboxes.forEach((checkbox) => {
@@ -61,7 +65,7 @@ export default function Home() {
     setDoneCount(count);
   }
 
-  function removeTask(li) {
+  function removeTask(li : Node) {
     const listContainer = document.getElementById("list-container");
     listContainer?.removeChild(li);
     updateDoneCount(); // Update the Done count after removing a task
