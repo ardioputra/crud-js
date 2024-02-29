@@ -4,8 +4,8 @@ import { useState } from "react";
 export default function Home() {
   const [doneCount, setDoneCount] = useState(0);
   function addTask() {
-    const inputBox = document.getElementById("input-box");
-    const listContainer = document.getElementById("list-container");
+    const inputBox = (document.getElementById("input-box") as HTMLElement);
+    const listContainer = (document.getElementById("list-container") as HTMLElement);
 
     if (!inputBox) {
       alert("Input box not found");
@@ -49,7 +49,7 @@ export default function Home() {
   }
 
   function updateDoneCount() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const checkboxes = (document.querySelectorAll('input[type="checkbox"]') as HTMLElement);
     let count = 0;
 
     checkboxes.forEach((checkbox) => {
