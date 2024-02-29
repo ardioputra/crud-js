@@ -1,5 +1,5 @@
 import "/src/index.css";
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Home() {
   const [doneCount, setDoneCount] = useState(0);
@@ -19,7 +19,6 @@ export default function Home() {
       input.setAttribute("type", "checkbox");
 
       let li = document.createElement("li");
-      li.classList.add("text-center p-5")
       li.appendChild(input);
 
       // Create a separate span element for the text content
